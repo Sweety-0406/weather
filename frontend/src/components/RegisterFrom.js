@@ -15,14 +15,12 @@ const RegisterForm = ({ onSignup }) => {
             if(password === confirmPassword){
                 e.preventDefault();
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`,{username,password})
-                console.log(response)
                 toast.success(response.data.message)
                 navigate('/login')
             }else{
                 toast.error("Password mismatch!")
             }
         } catch (error) {
-            console.log(error)
             toast.error("Something went wrong")
         }
     };

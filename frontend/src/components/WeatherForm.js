@@ -13,16 +13,14 @@ const WeatherForm = () => {
 
 
     useEffect(() => {
-        // const token = localStorage.getItem("token");
         if (!token) {
             navigate('/login'); 
         }
-    }, [navigate]);
+    }, [navigate,token]);
 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(process.env.REACT_APP_BACKEND_URL)
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather/:${city}`,
                 {
@@ -31,7 +29,6 @@ const WeatherForm = () => {
                     }
                 }
             )
-            console.log(response.data)
             if(response.data.weatherData.error){
                 toast.error("Please give the correct city name!")
                 setWeatherData('')

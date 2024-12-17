@@ -14,11 +14,9 @@ const LoginForm = () => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`,{username,password})
             const data = await response.data;
             localStorage.setItem('token', data.token);
-            console.log(response.data.id)
             toast.success(response.data.message)
             navigate('/')
         } catch (error) {
-            console.log(error)
             toast.error("Something went wrong.")
         }
     };

@@ -22,7 +22,6 @@ export const searchWeather =  async (req, res) => {
                 id: weather.userId
             }
         })
-        console.log(user)
         res.json({weatherData,user});
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch weather data" });
